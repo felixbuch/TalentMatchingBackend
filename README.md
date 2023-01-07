@@ -4,6 +4,8 @@ https://talentmatchingbackend.onrender.com/api/v1/talents
 
 https://www.elephantsql.com/
 
+
+*Sequenzdiagramm*
 ```
 @startuml
 title Talent Matching Prozess
@@ -39,6 +41,7 @@ end
 ![image](https://user-images.githubusercontent.com/93072175/211167432-da9e2ef4-c2fe-406e-ba49-15bbfdb271c6.png)
 
 
+*Aktivitätsdiagramm*
 ```
 @startuml
 
