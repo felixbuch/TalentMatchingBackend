@@ -42,7 +42,7 @@ end
 ```
 @startuml
 
-title Talent Matching Process
+title Talent Matching Prozess
 
 start
 :Zugang zur Applikation;
@@ -66,4 +66,4 @@ stop
 
 @enduml
 ```
-![image](https://user-images.githubusercontent.com/93072175/211167835-0834e310-beac-47e0-92cd-a5c42118a154.png)
+![image](https://user-images.githubusercontent.com/93072175/211168065-d0ef919b-ce2a-4fe5-8b13-437115fd711c.png)
