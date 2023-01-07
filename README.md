@@ -34,3 +34,6 @@ Talent -> Email: Antwort bei Interesse
 
 end
 @enduml
+
+
+![image](https://user-images.githubusercontent.com/93072175/211167432-da9e2ef4-c2fe-406e-ba49-15bbfdb271c6.png)
