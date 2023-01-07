@@ -4,7 +4,7 @@ https://talentmatchingbackend.onrender.com/api/v1/talents
 
 https://www.elephantsql.com/
 
-
+```
 @startuml
 title Talent Matching Prozess
 
@@ -34,6 +34,36 @@ Talent -> Email: Antwort bei Interesse
 
 end
 @enduml
-
+```
 
 ![image](https://user-images.githubusercontent.com/93072175/211167432-da9e2ef4-c2fe-406e-ba49-15bbfdb271c6.png)
+
+
+```
+@startuml
+
+title Talent Matching Process
+
+start
+:Zugang zur Applikation;
+
+if (Click "Anmelden"-Button) then (ja)
+:Schicke HTML-Formular mit Namen, Email und verschiedenen Skills ab;
+:Speichere Talent Data in Datenbank;
+else (nein)
+if (Click "Start Projekt"-Button) then (ja)
+:Schicke HTML-Formular mit Namen, Email, gesuchten Projekt Skills und Projektbeschreibung;
+:Speichere Projekt Data in Datenbank;
+:Datenbank nach passenden Talenten abfragen;
+:Schicke Email mit Projektbeschreibung an "gematchte" Talente;
+:Antwort bei Interesse;
+else (nein)
+:Tue nichts;
+endif
+endif
+
+stop
+
+@enduml
+```
+![image](https://user-images.githubusercontent.com/93072175/211167835-0834e310-beac-47e0-92cd-a5c42118a154.png)
