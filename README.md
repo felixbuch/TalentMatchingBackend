@@ -80,3 +80,7 @@ stop
 @enduml
 ```
 ![image](https://user-images.githubusercontent.com/93072175/211168065-d0ef919b-ce2a-4fe5-8b13-437115fd711c.png)
+
+
+Datenbankschema![image](https://user-images.githubusercontent.com/93072175/211536356-977d77ef-7f54-4501-9674-bacb63f12a67.png)
+
