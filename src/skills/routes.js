@@ -3,8 +3,6 @@ const controller = require("./controller");
 
 const router = Router();
 
-router.get("/", controller.getTalents);
-router.post("/enter", controller.enterSkill);
-router.post("/", controller.addTalent);
+router.get("/", controller.getSkills);
 
 module.exports = router;

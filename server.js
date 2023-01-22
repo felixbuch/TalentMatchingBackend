@@ -1,7 +1,9 @@
 const express = require("express");
 // Express Bibliothek muss installiert sein.
 
-const talentRoutes = require("./src/talents/routes");
+const skillRoutes = require("./src/skills/routes");
+const projectRoutes = require("./src/projects/routes");
+const userRoutes = require("./src/users/routes");
 // Pfad für Routes von der Haupt-Website festlegen -> Endpunkt Routes
 
 const cors = require("cors");
@@ -27,7 +29,10 @@ app.get("/", (req, res) => {
 });
 // Route für den Root-Pfad "/" setzen.
 
-app.use("/api/v1/talents", talentRoutes);
+app.use("/api/v1/skills", skillRoutes);
+app.use("/api/v1/projects", projectRoutes);
+app.use("/api/v1/users", userRoutes);
+// Jeweilige Routes für die Endpunkte.
 
 app.listen(port, () => console.log(`app listening on port ${port}`));
 // Server -> Listener starten. Listener sucht jetzt nach der Portnummer (3000). Wenn Server & Listener bereit: Ausgabe in der Konsole.
