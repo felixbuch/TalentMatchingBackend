@@ -5,8 +5,8 @@ getSkills()
 check Email
 ```
 
-Funktion: Projekt hinzufügen:
-umgesetzt durch addProject()
+Funktion: Nutzer Anmeldung:
+umgesetzt durch addUser()
 Funktion:
 
 
