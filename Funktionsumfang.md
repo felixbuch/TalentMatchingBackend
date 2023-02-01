@@ -45,3 +45,16 @@ const addUser = async (req, res) => {
   res.status(201).json(user);
 };
 ```
+
+Anmeldung eines Nutzers als Talent auf Plattform
+Speicherung der Nutzer als Talent, inklusive Name, Email und Skills in der Datenbank
+
+Erstellung eines Projekts als Projektinitiator und gleichzeitige Anmeldung als Nutzer(Projektinitiator)
+--z.B. Skills für Projekt auswählen
+--Projekt Namen
+--Projekt Beschreibung
+
+Benachrichtigung von Talenten bei einem Match
+Automatischer Versand einer Email mit Projektbeschreibung und Kontaktmöglichkeiten
+
+
