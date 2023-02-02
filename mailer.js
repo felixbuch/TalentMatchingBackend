@@ -9,17 +9,17 @@ async function mailer(name, email) {
   let testAccount = await nodemailer.createTestAccount();
 
   // create reusable transporter object using the default SMTP transport
-  /*let transporter = nodemailer.createTransport({
+  let transporter = nodemailer.createTransport({
     host: "smtp.web.de",
     port: 465, //587
     secure: true, // true for 465, false for other ports
-    requireTLS: true,
+    //requireTLS: true,
     auth: {
       user: process.env.EMAILUSER, // generated ethereal user
       pass: process.env.EMAILPWD, // generated ethereal password
     },
-  });*/
-
+  });
+/*
   const transporter = nodemailer.createTransport({
     host: 'smtp.ethereal.email',
     port: 587,
@@ -27,7 +27,7 @@ async function mailer(name, email) {
         user: 'stephanie29@ethereal.email',
         pass: 'SBnTAHBtQKN9fcHcXk'
     }
-});
+});*/
 
   // send mail with defined transport object
   let info = await transporter.sendMail({

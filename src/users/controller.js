@@ -1,7 +1,8 @@
 const pool = require("../../db");
 const queries = require("./queries");
 const { assignSkillToUser } = require("../skills/queries");
-const mailer = require("../../mailer");
+//const mailer = require("../../mailer");
+const sendMail = require("../../sendgrid");
 
 // addUser nutzt die FormData für das Submitten auf der Anmelden-Seite
 
@@ -14,7 +15,10 @@ const addUser = async (req, res) => {
   //console.log(skills);
   console.log(req.body)
 
-  mailer(name, email);
+
+
+  //mailer(name, email);
+  sendMail(name, email);
   //mailer().catch(console.error)
 
   // E-Mail checken
