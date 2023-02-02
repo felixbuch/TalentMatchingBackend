@@ -9,6 +9,8 @@ const userRoutes = require("./src/users/routes");
 const cors = require("cors");
 // CORS-Bibliothek (Cross-Origin Resource Sharing) muss installiert sein.
 
+
+
 require("dotenv").config();
 // Dotenv-Bibliothek muss installiert sein. Umgebungsvariablen sind setzbar. Brauchen wir für die Datenbankanbindung (db.js)
 

@@ -1,6 +1,8 @@
 const pool = require("../../db");
 const queries = require("./queries");
 const { assignSkillToUser } = require("../skills/queries");
+//const mailer = require("../../mailer");
+const sendMail = require("../../sendgrid");
 
 // addUser nutzt die FormData für das Submitten auf der Anmelden-Seite
 
@@ -10,7 +12,14 @@ const addUser = async (req, res) => {
     email,
     skills
   } = req.body;
-  console.log(skills);
+  //console.log(skills);
+  console.log(req.body)
+
+
+
+  //mailer(name, email);
+  sendMail(name, email);
+  //mailer().catch(console.error)
 
   // E-Mail checken
   let results = await pool.query(queries.checkEmailExists, [email]) // Deklariere ich als let, weil ich's dann überschreiben kann nachher.
@@ -35,6 +44,9 @@ const addUser = async (req, res) => {
   }
 
   res.status(201).json(user);
+
+  //mailer(name, email);
+  //mailer().catch(console.error)
 };
 
 module.exports = { addUser };
