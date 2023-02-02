@@ -3,13 +3,14 @@
 
 ```
 *Links*
-
-https://talentmatchingbackend.onrender.com/api/v1/talents
-https://www.elephantsql.com/
-http://www.plantuml.com/
-https://www.postman.com/
-https://render.com/
-
+Frontend: https://felixbuch.github.io/
+Backend: https://talentmatchingbackend.onrender.com  
+DaaS: https://www.elephantsql.com/
+UML-Tool: http://www.plantuml.com/
+API-Testing: https://www.postman.com/
+Hosting-Backend: https://render.com/
+Email: https://nodemailer.com/
+Email: https://sendgrid.com/
 ```
 
 
