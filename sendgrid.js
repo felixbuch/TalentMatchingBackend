@@ -11,14 +11,14 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
     to: `${email}`, // Change to your recipient
     from: "hs-startup-crew@web.de", // Change to your verified sender
     subject: `"Hallo ${name} - Willkommen bei HS-Wismar-Talentmatching!"`,
-    text: "and easy to do anywhere, even with Node.js",
+    text: "Willkommen bei HS-Wismar-Talentmatching!",
     html: `"<h1><strong>Hallo ${name} - Willkommen bei HS-Wismar-Talentmatching!</strong></h1>
-    <p>Vielen Dank für deine Anmeldung auf unserer Skillmatching Plattform.</p>
+    <p>Vielen Dank für deine Anmeldung auf unserer Skillmatching Plattform.</p> <br><br>
     <p>Um dein Konto zu bestätigen, klicke bitte auf den folgenden Link:</p>
-    <a href="https://felixbuch.github.io">Bestätigungslink</a>
-    <p>Mit HS-Wismar-Talentmatching kannst du deine Fähigkeiten und Fertigkeiten mit anderen Studenten teilen, spannende Projekte starten und finden und vielleicht sogar ein studentisches Startup gründen.</p>
-    <p>Wir freuen uns, dass du Teil unserer Community bist!</p>
-    <p>Mit freundlichen Grüßen,</p>
+    <a href="https://felixbuch.github.io">Bestätigungslink</a><br><br>
+    <p>Mit HS-Wismar-Talentmatching kannst du deine Fähigkeiten und Fertigkeiten mit anderen Studenten teilen, spannende Projekte starten und finden und vielleicht sogar ein studentisches Startup gründen.</p><br>
+    <p>Wir freuen uns, dass du Teil unserer Community bist!</p><br>
+    <p>Mit freundlichen Grüßen,</p><br>
     <p>Das HS-Wismar-Talentmatching Team</p>"`,   
   };
   
