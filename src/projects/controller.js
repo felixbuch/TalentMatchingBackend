@@ -37,39 +37,39 @@ const addProject = async (req, res) => {
 
   const project = projectResults.rows[0]; // 0-tes Element des Arrays ist hier das Projekt
 
-  // Jeweils die Skill-IDs aus dem Array holen und mit Projekt_ID in ps_links-Tabelle schreiben
-  for (let i = 0; i < skills.length; i++) {
-    await pool.query(assignSkillToProject, [project.projekt_id, skills[i]]);
+  if (skills) {
+    // Jeweils die Skill-IDs aus dem Array holen und mit Projekt_ID in ps_links-Tabelle schreiben
+    for (let i = 0; i < skills.length; i++) {
+      await pool.query(assignSkillToProject, [project.projekt_id, skills[i]]);
+    }
+    res.status(201).json(project);
+  } else {
+    res.status(400).send();
+    return;
   }
-  res.status(201).json(project);
-
 
   let skillstring = skills.toString();
-  
-  console.log("skillstring" + skillstring);
 
+  console.log("skillstring" + skillstring);
 
   let talentarray = await pool.query(
     `SELECT DISTINCT u.name AS receivername, u.email AS receiveremail FROM us_links us, users u WHERE us.user_id = u.user_id AND us.skill_ID IN (${skillstring})`
   );
 
-  let talentarray2 = JSON.stringify(talentarray.rows[0])
-
+  let talentarray2 = JSON.stringify(talentarray.rows[0]);
+  console.log(JSON.stringify(talentarray.rows))
 
   for (let i = 0; i < talentarray.rows.length; i++) {
-    
-sendProjectRequest(
-    talentarray.rows[i].receivername,
-    talentarray.rows[i].receiveremail,
-    name,
-    projektname,
-    projektbeschreibung,
-    email, 
-    skills)
-
+    sendProjectRequest(
+      talentarray.rows[i].receivername,
+      talentarray.rows[i].receiveremail,
+      name,
+      projektname,
+      projektbeschreibung,
+      email,
+      skills
+    );
   }
 };
 
-
 module.exports = { addProject };
-
