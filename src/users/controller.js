@@ -3,6 +3,7 @@ const queries = require("./queries");
 const { assignSkillToUser } = require("../skills/queries");
 //const mailer = require("../../mailer");
 const sendMail = require("../../sendgrid");
+//const { json } = require("express");
 
 // addUser nutzt die FormData für das Submitten auf der Anmelden-Seite
 
@@ -17,17 +18,23 @@ const addUser = async (req, res) => {
 
 
 
-  //mailer(name, email);
-  sendMail(name, email);
-  //mailer().catch(console.error)
+
 
   // E-Mail checken
-  let results = await pool.query(queries.checkEmailExists, [email]) // Deklariere ich als let, weil ich's dann überschreiben kann nachher.
-
-  if (results.rows.length) {
+    
+  let results = await pool.query(queries.checkEmailExists, [email]); // Deklariere ich als let, weil ich's dann überschreiben kann nachher.
+  console.log("hallo warum logge ich nicht?")
+  console.log("Results" + JSON.stringify(results.rowCount));
+  if (results.rowCount > 0) {
     res.send("Email existiert bereits");
+    console.log("Das ist res" + res);
     return // Early return, damit spar ich mir eine Einrückung hier nach in einem zusätzlichen else-Teil.
   }
+  
+
+    //mailer(name, email), sende Anmeldungsbestätigung;
+    sendMail(name, email);
+    //mailer().catch(console.error)
 
   results = await pool.query(
     queries.addUser,
