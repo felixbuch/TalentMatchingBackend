@@ -7,4 +7,4 @@ const addUser =
      
 //const checkEmailExists = "SELECT * FROM users u WHERE u.Email = $1";
 
-module.exports = { addUser, checkEmailExists };
+module.exports = { addUser };
