@@ -19,11 +19,12 @@ const addUser = async (req, res) => {
     for (let i = 0; i < skills.length; i++) {
       await pool.query(assignSkillToUser, [user.user_id, skills[i]]);
     }
+    res.status(201).json(user);
   } else {
     res.status(400).send();
     return;
   }
-  res.status(201).json(user);
+
 
 };
 
