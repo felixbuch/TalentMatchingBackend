@@ -12,7 +12,24 @@ Hosting-Backend: https://render.com/
 Email: https://nodemailer.com/
 Email: https://sendgrid.com/
 ```
+´´´
+*Datenbankschema kreieren (mit Testdaten):*
 
+CREATE TABLE users (User_ID SERIAL PRIMARY KEY, Name Varchar(255) NOT NULL, Email Varchar(255) NOT NULL);
+CREATE TABLE fakultaeten (Fakultaet_ID SERIAL PRIMARY KEY, Name VARCHAR(255) NOT NULL);
+CREATE TABLE projekte (Projekt_ID SERIAL PRIMARY KEY, User_ID SERIAL REFERENCES users(User_ID), Name VARCHAR(255) NOT NULL, Description VARCHAR(255) NOT NULL);
+CREATE TABLE skills (Skill_ID SERIAL PRIMARY KEY, Fakultaet_ID SERIAL REFERENCES   fakultaeten(Fakultaet_ID), Name VARCHAR(255) NOT NULL);
+CREATE TABLE us_links (User_ID SERIAL REFERENCES users(User_ID), Skill_ID SERIAL REFERENCES skills(Skill_ID));
+CREATE TABLE ps_links (Projekt_ID SERIAL REFERENCES projekte(Projekt_ID), Skill_ID SERIAL REFERENCES skills(Skill_ID));
+INSERT INTO fakultaeten(name) VALUES ('Gestaltung'), ('Wirtschaft'), ('Technik');
+INSERT INTO skills(name, Fakultaet_ID) VALUES ('Javascript', 3), ('Holzarbeit', 1), ('Webdesign', 3),
+('3D Druck', 3), ('Textilarbeit', 1), ('Software', 3), ('Produktdesign', 1), ('Goldschmied', 1), ('Projektmanagement', 2), ('Malen', 1), ('Buchhaltung', 2), ('Grafikdesign', 1), ('Logistik', 2), ('Marketing', 2);
+INSERT INTO users (name, email) VALUES ('Ruediger Steffan', 'Testmail1@23.de'), ('Juergen Cleve', 'Testmail2@34.de'), ('Joeran Pieper', 'Testmail3@45.de');
+INSERT INTO projekte (User_ID, Name, Description) VALUES (1, 'Testprojekt1', 'Suche Projektpartner im Bezug auf Datenbanken.'), (2, 'Testprojekt2', 'Suche Mitfahrgelegenheit zum nächsten Hansa-Spiel.'), (3, 'Testprojekt3', 'Suche kompetente Studenten für Startup-Yard-Projekte.');
+INSERT INTO us_links (User_ID, Skill_ID) VALUES (1,1), (1,6), (2,6), (2,9), (2,13), (3,1), (3,3), (3,4), (3,6), (3,9);
+INSERT INTO ps_links (Projekt_ID, Skill_ID) VALUES (1,6), (1,14), (2,13), (3,1), (3,7), (3,12);
+
+´´´
 
 
 ```
