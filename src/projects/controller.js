@@ -52,12 +52,16 @@ const addProject = async (req, res) => {
   }
 
   let skillstring = skills.toString();
-
-  console.log("skillstring" + skillstring);
-
   let talentarray = await pool.query(
     `SELECT DISTINCT u.name AS receivername, u.email AS receiveremail FROM us_links us, users u WHERE us.user_id = u.user_id AND us.skill_ID IN (${skillstring})`
   );
+
+
+  let skillnamenarray = await pool.query(
+    `SELECT DISTINCT s.name FROM skills s WHERE skill_ID IN (${skillstring});`
+  );
+  let skillnamenarray2 = skillnamenarray.rows.map(row => row.name);
+  
 
   //let talentarray2 = JSON.stringify(talentarray.rows[0]);
   console.log(JSON.stringify(talentarray.rows))
@@ -70,7 +74,7 @@ const addProject = async (req, res) => {
       projektname,
       projektbeschreibung,
       email,
-      skills
+      skillnamenarray2
     );
   }
 };
