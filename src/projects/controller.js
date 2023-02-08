@@ -15,21 +15,12 @@ const addProject = async (req, res) => {
     projektname,
     projektbeschreibung,
   } = req.body;
-  /*
-  // E-Mail checken
-  let results = await pool.query(checkEmailExists, [email]) // Deklariere ich als let, weil ich's dann überschreiben kann nachher.
 
-  if (results.rows.length) {
-    res.send("Email existiert bereits");
-    return // Early return, damit spar ich mir eine Einrückung hier nach in einem zusätzlichen else-Teil.
-  }
-*/
   // User adden
   results = await pool.query(addUser, [name, email]);
-  const user = results.rows[0]; 
+  const user = results.rows[0];   // 0-tes Element des Arrays ist hier der User
+
   sendMail(name, email);
-  // 0-tes Element des Arrays ist hier der User
-  //console.log("Das ist result.rows[0]" + JSON.stringify(results.rows[0]))
 
   // Projekt adden
   projectResults = await pool.query(queries.addProject, [

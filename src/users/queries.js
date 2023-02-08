@@ -5,6 +5,6 @@ const addUser =
 
 // E-Mail-Überprüfung.
      
-const checkEmailExists = "SELECT * FROM users u WHERE u.Email = $1";
+//const checkEmailExists = "SELECT * FROM users u WHERE u.Email = $1";
 
 module.exports = { addUser, checkEmailExists };
