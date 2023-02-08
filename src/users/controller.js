@@ -8,20 +8,12 @@ const sendMail = require("../../sendgrid");
 // addUser nutzt die FormData für das Submitten auf der Anmelden-Seite
 
 const addUser = async (req, res) => {
-  const {
-    name,
-    email,
-    skills
-  } = req.body;
+  const { name, email, skills } = req.body;
   //console.log(skills);
-  console.log(req.body)
-
-
-
-
+  console.log(req.body);
 
   // E-Mail checken
-    
+  /* 
   let results = await pool.query(queries.checkEmailExists, [email]); // Deklariere ich als let, weil ich's dann überschreiben kann nachher.
   console.log("hallo warum logge ich nicht?")
   console.log("Results" + JSON.stringify(results.rowCount));
@@ -30,26 +22,24 @@ const addUser = async (req, res) => {
     console.log("Das ist res" + res);
     return // Early return, damit spar ich mir eine Einrückung hier nach in einem zusätzlichen else-Teil.
   }
-  
+  */
 
-    //mailer(name, email), sende Anmeldungsbestätigung;
-    sendMail(name, email);
-    //mailer().catch(console.error)
+  //mailer(name, email), sende Anmeldungsbestätigung;
+  sendMail(name, email);
+  //mailer().catch(console.error)
 
-  results = await pool.query(
-    queries.addUser,
-    [
-      name,
-      email,
-    ],
-  )
+  results = await pool.query(queries.addUser, [name, email]);
   const user = results.rows[0]; // 0-tes Element des Arrays ist hier der User
 
-  // Jeweils die Skill-IDs aus dem Array holen und mit User_ID in us_links-Tabelle schreiben
-  for (let i = 0; i < skills.length; i++) {
-    await pool.query(assignSkillToUser, [user.user_id, skills[i]])
+  if (skills) {
+    // Jeweils die Skill-IDs aus dem Array holen und mit User_ID in us_links-Tabelle schreiben
+    for (let i = 0; i < skills.length; i++) {
+      await pool.query(assignSkillToUser, [user.user_id, skills[i]]);
+    }
+  } else {
+    res.status(400).send();
+    return;
   }
-
   res.status(201).json(user);
 
   //mailer(name, email);
